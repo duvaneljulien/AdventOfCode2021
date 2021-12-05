@@ -19,14 +19,15 @@ fs.createReadStream('02.12.2021.csv')
         for (let i = 0; i < csvData.length; i++) {
             if (csvData[i].DIRECTION === 'forward') {
                 horizontal_position = +horizontal_position + +csvData[i].VALUE
+                depth_position = +depth_position + (+aim * +csvData[i].VALUE)
             }
 
             if (csvData[i].DIRECTION === 'down') {
-                depth_position = +depth_position + +csvData[i].VALUE
+                aim = +aim + +csvData[i].VALUE
             }
 
             if (csvData[i].DIRECTION === 'up') {
-                depth_position = +depth_position - +csvData[i].VALUE
+                aim = +aim - +csvData[i].VALUE
             }
         }
 
